@@ -12,5 +12,9 @@ QT_END_NAMESPACE
 class CVWindow : public QMainWindow
 {
     Q_OBJECT
+
+public:
+    CVWindow(QMainWindow* owner = nullptr);
+    virtual ~CVWindow();
 };
 
