@@ -4,6 +4,8 @@
 #include <vector>
 #include <list>
 
+#include "CVDefs.h"
+
 class CVObject
 {
     enum State
@@ -17,26 +19,26 @@ public:
     CVObject(class ICVDataModel* dataModel);
     virtual ~CVObject();
 
-    void Update(int compId);
-
     void AddComponent(class CVComponent* comp);
     void RemoveComponent(class CVComponent* comp);
-    class CVComponent* GetComponent(int compId);
-    class CVComponent* GetComponent(const std::string& name);
+
+    void Update(float deltaTime);
+    virtual void UpdateObject(float deltaTime);
+    void UpdateComponents(float deltaTime);
 
     class ICVDataModel* GetDataModel() { return mDataModel; }
 
     State GetState() const { return mState; }
     void SetState(State state) { mState = state; }
 
-    int GetCompCounter();
+    void ComputeWorldTransform();
+
 
 private:
     State mState;
+    std::string mName;
     class ICVDataModel* mDataModel;
-    std::vector<class CVItem*> mSrcItems;
-    std::vector<class CVItem*> mDstItems;
+    std::vector<class CVComponent*> mComponents;
 
-    std::list<class CVComponent*> mComponents;
-    int mCompCounter;
+    CV_DISABLE_COPY_AND_ASSIGN(CVObject)
 };

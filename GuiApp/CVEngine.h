@@ -2,6 +2,10 @@
 
 #include "CVDataModelFactory.h"
 
+#include <vector>
+
+#include "CVDefs.h"
+
 class CVEngine
 {
 public:
@@ -11,20 +15,30 @@ public:
     bool Initialize();
     void Shutdown();
     
-    void UpdateNode(int nodeId, int compId);
+    
     void Run();
+    void RunLoop();
 
     void AddNode(class CVObject *node);
     void RemoveNode(class CVObject *node);
 
 private:
-    // コピー禁止
-    CVEngine(const CVEngine& engine);
-    CVEngine& operator=(const CVEngine& engine);
+    void UpdateEngine() {}
+    void ProcessInput() {}
+    void GenerateOutput() {}
+    bool LoadData() {}
+    void UnloadData() {}
 
     // CVObjectのためのデータ構造
     class ICVDataModel* mDataModel;
 
     // CVDataModel用ファクトリ
     ICVDataModelFactory* mDataModelFactory;
+
+    std::vector<class CVObject*> mNodes;
+    std::vector<class CVObject*> mPendingNodes;
+
+    bool mIsRunning;
+
+    CV_DISABLE_COPY_AND_ASSIGN(CVEngine)
 };

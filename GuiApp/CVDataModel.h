@@ -1,5 +1,7 @@
 #pragma once
 
+#include "CVDefs.h"
+
 /////////////////////////
 // 抽象インターフェースクラス
 /////////////////////////
@@ -10,7 +12,6 @@ public:
     virtual void AddNode(class CVObject* node) = 0;
     virtual void RemoveNode(class CVObject* node) = 0;
     virtual void UpdateNode(int nodeId, int compId) = 0;
-    virtual void Run() = 0;
 };
 
 // List構造インターフェース

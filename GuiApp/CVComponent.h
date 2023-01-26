@@ -2,18 +2,18 @@
 
 #include <string>
 
+#include "CVDefs.h"
+
 class ICVComponent
 {
 public:
     virtual ~ICVComponent() {}
-
-    virtual void Run() = 0;
+    virtual void Update(float deltaTime) = 0;
+    virtual class CVObject* GetObject() = 0;
     virtual void SetName(const std::string& name) = 0;
-    virtual const std::string& GetName() const = 0;
-    virtual int GetId() const = 0;
+    virtual const std::string& GetName() = 0;
+    virtual void OnUpdateTransform() = 0;
 };
-
-#include <vector>
 
 class CVComponent : public ICVComponent
 {
@@ -21,17 +21,15 @@ public:
     CVComponent(class CVObject* owner);
     virtual ~CVComponent();
 
-    virtual void Run() override;
-
-    int GetId() const override { return mId; }
-    void SetName(const std::string& name) override { mName = name; }
-    const std::string& GetName() const override { return mName; }
+    virtual void Update(float deltaTime) override {}
+    virtual void OnUpdateTransform() override {}
+    class CVObject* GetObject() override { return mOwner; }
+    void SetName(const std::string& name) { mName = name; }
+    const std::string& GetName() { return mName; }
 
 private:
     class CVObject* mOwner;
-    int mId;
     std::string mName;
-    std::vector<class CVItem*> mTrialSrcItems;
-    std::vector<class CVItem*> mTrialDstItems;
-    
+
+    CV_DISABLE_COPY_AND_ASSIGN(CVComponent)
 };

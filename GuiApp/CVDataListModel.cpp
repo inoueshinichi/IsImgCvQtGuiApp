@@ -27,8 +27,3 @@ void CVDataListModel::UpdateNode(int nodeId, int compId)
 
 }
 
-void CVDataListModel::Run()
-{
-
-}
-

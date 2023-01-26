@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "CVDefs.h"
+
 /////////////////////////
 // 抽象インターフェースクラス
 /////////////////////////
@@ -21,4 +23,6 @@ public:
 
     class ICVDataModel *CreateDataModel(class CVEngine *engine, const std::string &name) override;
     void DeleteDataModel(class ICVDataModel* dataModel) override;
+
+    CV_DISABLE_COPY_AND_ASSIGN(CVDataModelFactory)
 };

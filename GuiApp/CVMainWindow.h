@@ -4,6 +4,8 @@
 
 #include "CVEngine.h"
 
+#include "CVDefs.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -20,4 +22,6 @@ public:
     ~CVMainWindow();
 private:
     CVEngine mCvEngine;
+
+    CV_DISABLE_COPY_AND_ASSIGN(CVMainWindow)
 };

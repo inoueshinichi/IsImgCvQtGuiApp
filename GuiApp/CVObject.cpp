@@ -8,7 +8,6 @@
 CVObject::CVObject(ICVDataModel *dataModel)
     : mState(EActive)
     , mDataModel(dataModel)
-    , mCompCounter(0)
 {
     mDataModel->AddNode(this);
 }
@@ -23,13 +22,6 @@ CVObject::~CVObject()
         // リスト末尾の削除は, RemoveComponent関数で行う.
         delete mComponents.back();  
     }
-}
-
-int CVObject::GetCompCounter()
-{
-    int ret = mCompCounter;
-    mCompCounter++;
-    return ret;
 }
 
 void CVObject::AddComponent(CVComponent* comp)
@@ -51,48 +43,38 @@ void CVObject::RemoveComponent(CVComponent* comp)
     mComponents.erase(iter);
 }
 
-void CVObject::Update(int compId)
+void CVObject::Update(float deltaTime)
 {
-    auto iter = mComponents.begin();
-    for (; iter != mComponents.end(); ++iter)
+    if (mState == EActive)
     {
-        if (compId == (*iter)->GetId())
-        {
-            break;
-        }
+        ComputeWorldTransform();
+
+        UpdateComponents(deltaTime);
+        UpdateObject(deltaTime);
+
+        ComputeWorldTransform();
     }
+
+    
 
     // mTrialItemのResultデータをmDeployedItemのResultデータに付け替える
     std::cout << "Update CVObject with ID:" << " component!!" << std::endl;
 }
 
-CVComponent* CVObject::GetComponent(int compId)
+void CVObject::UpdateObject(float deltaTime)
 {
-    CVComponent* ptr = nullptr;
-    for (auto& p : mComponents)
-    {
-        if (compId == p->GetId())
-        {
-            ptr = p;
-            break;
-        }
-    }
-    
-    return ptr;
+
 }
 
-
-CVComponent* CVObject::GetComponent(const std::string& name)
+void CVObject::UpdateComponents(float deltaTime)
 {
-    CVComponent* ptr = nullptr;
-    for (auto& p : mComponents)
+    for (auto comp : mComponents)
     {
-        if (name == p->GetName())
-        {
-            ptr = p;
-            break;
-        }
+        comp->Update(deltaTime);
     }
+}
 
-    return ptr;
+void CVObject::ComputeWorldTransform()
+{
+
 }

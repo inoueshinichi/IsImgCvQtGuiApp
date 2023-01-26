@@ -3,6 +3,8 @@
 #include <QGraphicsScene>
 #include <QRectF>
 
+#include "CVDefs.h"
+
 class CVScene : public QGraphicsScene
 {
     Q_OBJECT
@@ -11,4 +13,6 @@ public:
     CVScene(const QRectF& sceneRect, class QObject* owner = nullptr);
     CVScene(class QObject* owner = nullptr);
     virtual ~CVScene();
+
+    CV_DISABLE_COPY_AND_ASSIGN(CVScene)
 };

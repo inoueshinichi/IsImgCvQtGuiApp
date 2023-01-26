@@ -1,2 +1,0 @@
-#include "CVUsbMonoCamWindow.h"
-
