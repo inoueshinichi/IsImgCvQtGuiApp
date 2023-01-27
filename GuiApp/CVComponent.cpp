@@ -6,6 +6,7 @@ CVComponent::CVComponent(CVObject *owner)
     : mOwner(owner)
     , mName("")
 {
+    assert(owner != nullptr);
     mOwner->AddComponent(this);
 }
 

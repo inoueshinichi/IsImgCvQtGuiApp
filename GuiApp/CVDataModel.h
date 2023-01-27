@@ -11,7 +11,6 @@ public:
     virtual ~ICVDataModel() {}
     virtual void AddNode(class CVObject* node) = 0;
     virtual void RemoveNode(class CVObject* node) = 0;
-    virtual void UpdateNode(int nodeId, int compId) = 0;
 };
 
 // List構造インターフェース

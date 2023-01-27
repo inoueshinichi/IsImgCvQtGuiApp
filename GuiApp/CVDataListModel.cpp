@@ -22,8 +22,3 @@ void CVDataListModel::RemoveNode(CVObject* node)
 
 }
 
-void CVDataListModel::UpdateNode(int nodeId, int compId)
-{
-
-}
-

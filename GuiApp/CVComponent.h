@@ -24,8 +24,8 @@ public:
     virtual void Update(float deltaTime) override {}
     virtual void OnUpdateTransform() override {}
     class CVObject* GetObject() override { return mOwner; }
-    void SetName(const std::string& name) { mName = name; }
-    const std::string& GetName() { return mName; }
+    void SetName(const std::string& name) override { mName = name; }
+    const std::string& GetName() override { return mName; }
 
 private:
     class CVObject* mOwner;

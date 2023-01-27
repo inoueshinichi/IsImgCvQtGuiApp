@@ -3,9 +3,11 @@
 #include "CVComponent.h"
 
 #include <vector>
-#include <list>
+#include <memory>
 
 #include "CVDefs.h"
+
+class ICVItem;
 
 class CVIPComponent : public CVComponent
 {
@@ -16,17 +18,20 @@ public:
     void Update(float deltaTime) override;
     void OnUpdateTransform() override {};
 
-    void SetSrcItems(const std::vector<class ICVItem*>& srcItems);
-    const std::vector<class ICVItem*>& GetDstItems() const;
+    const std::vector<std::shared_ptr<ICVItem> > &GetSrcItems() const { return mSrcItems; }
+    void SetSrcItems(const std::vector<std::shared_ptr<ICVItem> > &srcItem) { mSrcItems = srcItem; }
 
-    void AddTask(class CVIPTask* task);
-    void RemoveTask(class CVIPTask* task);
+    const std::vector<std::shared_ptr<ICVItem>> &GetDstItems() const { return mDstItems; }
+    void SetDstItems(const std::vector<std::shared_ptr<ICVItem> > &dstItem) { mDstItems = dstItem; }
 
 private:
-    unsigned int mCurrentTaskIndex;
-    std::vector<class CVIPTask*> mIPTasks; // 画像処理
-    std::vector<class ICVItem*> mSrcItems; // 参照
-    std::vector<class ICVItem*> mDstItems; // 値
+    
+    
+
+
+    class CVIPTaskController* mTaskController;
+    std::vector<std::shared_ptr<ICVItem> > mSrcItems; // 参照
+    std::vector<std::shared_ptr<ICVItem> > mDstItems; // 値
 
     CV_DISABLE_COPY_AND_ASSIGN(CVIPComponent)
 };

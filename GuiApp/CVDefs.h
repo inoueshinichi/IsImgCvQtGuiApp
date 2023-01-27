@@ -1,8 +1,20 @@
 #pragma once
 
+// Windows supports
 #if defined(_MSC_VER)
 // __func__の定義
 #define __func__ __FUNCTION__
+#endif
+
+// dll/lib
+#if defined(_MSC_VER) && !defined(__CUDACC__)
+    #if defined(CV_PLUGIN_EXPORTS) || defined(CV_PLUGIN_dbg_EXPORTS)
+    #define CV_DLL_API __declspec(dllexport)
+#else
+    #define CV_DLL_API __declspec(dllimport)
+#endif
+#else
+    #define CV_DLL_API
 #endif
 
 // debug log

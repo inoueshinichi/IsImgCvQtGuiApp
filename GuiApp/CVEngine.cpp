@@ -3,9 +3,9 @@
 #include "CVDataModel.h"
 
 CVEngine::CVEngine()
-    : mDataModelFactory(nullptr)
+    : mIsRunning(true)
+    , mDataModelFactory(nullptr)
     , mDataModel(nullptr)
-    , mIsRunning(true)
 {
     // DataModelFactory
     mDataModel = mDataModelFactory->CreateDataModel(this, "List Model");
@@ -51,4 +51,30 @@ void CVEngine::AddNode(CVObject* node)
 void CVEngine::RemoveNode(CVObject* node)
 {
     mDataModel->RemoveNode(node);
+}
+
+void CVEngine::UpdateEngine()
+{
+    // ここで各ノードを更新
+    // データモデル構造によって更新順序が変わる.
+}
+
+void CVEngine::ProcessInput()
+{
+
+}
+
+void CVEngine::GenerateOutput()
+{
+
+}
+
+bool CVEngine::LoadData()
+{
+
+}
+
+void CVEngine::UnloadData()
+{
+
 }

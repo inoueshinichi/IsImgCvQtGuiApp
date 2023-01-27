@@ -17,7 +17,6 @@ public:
 
     virtual void AddNode(class CVObject* node) override;
     virtual void RemoveNode(class CVObject* node) override;
-    virtual void UpdateNode(int nodeId, int compId) override;
 
 private:
     class CVEngine* mEngine;

@@ -23,22 +23,19 @@ public:
     void RemoveNode(class CVObject *node);
 
 private:
-    void UpdateEngine() {}
-    void ProcessInput() {}
-    void GenerateOutput() {}
-    bool LoadData() {}
-    void UnloadData() {}
+    void UpdateEngine();
+    void ProcessInput();
+    void GenerateOutput();
+    bool LoadData();
+    void UnloadData();
 
-    // CVObjectのためのデータ構造
-    class ICVDataModel* mDataModel;
+    bool mIsRunning;
 
     // CVDataModel用ファクトリ
     ICVDataModelFactory* mDataModelFactory;
 
-    std::vector<class CVObject*> mNodes;
-    std::vector<class CVObject*> mPendingNodes;
-
-    bool mIsRunning;
+    // CVObjectのためのデータ構造
+    class ICVDataModel *mDataModel;
 
     CV_DISABLE_COPY_AND_ASSIGN(CVEngine)
 };
