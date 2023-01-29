@@ -3,6 +3,7 @@
 #include "CVDataModel.h"
 
 #include <vector>
+#include <list>
 
 #include "CVDefs.h"
 
@@ -18,11 +19,15 @@ public:
     virtual void AddNode(class CVObject* node) override;
     virtual void RemoveNode(class CVObject* node) override;
 
+    virtual void UpdateNodes(float deltaTime) override;
+
+    StructureType GetModelType() const override { return EListModel; }
+
 private:
     class CVEngine* mEngine;
-    std::vector<class CVObject *> mNodes;
+    std::list<class CVObject*> mNodes;
     std::vector<class CVObject *> mPendingNodes;
-    bool mUpdatingNodes;
+    
 
     CV_DISABLE_COPY_AND_ASSIGN(CVDataListModel)
 };

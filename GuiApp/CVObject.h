@@ -8,14 +8,14 @@
 
 class CVObject
 {
+public:
     enum State
     {
         EActive,
         EPaused,
         EDead,
     };
-
-public:
+    
     CVObject(class ICVDataModel* dataModel);
     virtual ~CVObject();
 

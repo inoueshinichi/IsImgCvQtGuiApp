@@ -46,10 +46,9 @@
 
 
 // コピーコンストラクタとコピー代入演算子の外部公開を禁止する
-#define CV_DISABLE_COPY_AND_ASSIGN(class_name) \
-private:                                       \
-    class_name(const class_name &);            \
-    class_name &operator=(const class_name &);
+#define CV_DISABLE_COPY_AND_ASSIGN(class_name)           \
+    class_name(const class_name &) = delete;             \
+    class_name &operator=(const class_name &) = delete;
 
 
 #if (__cplusplus < 201704L)

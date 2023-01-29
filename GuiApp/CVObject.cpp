@@ -63,7 +63,7 @@ void CVObject::Update(float deltaTime)
 
 void CVObject::UpdateObject(float deltaTime)
 {
-
+    // Object固有の処理
 }
 
 void CVObject::UpdateComponents(float deltaTime)

@@ -8,9 +8,19 @@
 class ICVDataModel
 {
 public:
+    enum StructureType
+    {
+        EListModel,
+        ETreeModel,
+        ETableModel,
+        EGraphModel,
+    };
+
     virtual ~ICVDataModel() {}
     virtual void AddNode(class CVObject* node) = 0;
     virtual void RemoveNode(class CVObject* node) = 0;
+    virtual void UpdateNodes(float deltaTime) = 0;
+    virtual StructureType GetModelType() const = 0;
 };
 
 // List構造インターフェース
