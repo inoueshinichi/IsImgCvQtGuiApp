@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 class CVIPTaskController
 {
@@ -15,6 +15,8 @@ public:
     bool ChangeRepresentativeTask(unsigned int taskID);
     bool EraseTask(unsigned int taskID);
     class CVIPComponent* GetIPCompoennt() const { return mOwner; }
+
+    const std::string& GetClassName() const { return "CVIPTaskController"; }
 
 private:
     friend class CVIPTask;

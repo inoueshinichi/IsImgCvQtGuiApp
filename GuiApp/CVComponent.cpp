@@ -1,10 +1,9 @@
 
 #include "CVComponent.h"
-#include "CVObject.h"
+#include "CVNode.h"
 
-CVComponent::CVComponent(CVObject *owner)
-    : mOwner(owner)
-    , mName("")
+CVComponent::CVComponent(CVNode *owner)
+    : mOwner(owner), mName("")
 {
     assert(owner != nullptr);
     mOwner->AddComponent(this);

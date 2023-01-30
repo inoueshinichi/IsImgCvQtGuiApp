@@ -1,6 +1,10 @@
 # IsImgCvQtGuiApp
 画像処理+グラフィックスのデスクトップアプリケーション  
 
+マイルストーン  
+Step1. IPScriptプラグインシステムの完成  
+Step2. 
+
 Platforms:
 Windows, macOS, Linux  
 

@@ -1,6 +1,6 @@
 #include "CVDataListModel.h"
 #include "CVEngine.h"
-#include "CVObject.h"
+#include "CVNode.h"
 
 CVDataListModel::CVDataListModel(CVEngine* engine)
     : mEngine(engine)
@@ -13,7 +13,7 @@ CVDataListModel::~CVDataListModel()
 
 }
 
-void CVDataListModel::AddNode(CVObject* node)
+void CVDataListModel::AddNode(CVNode *node)
 {
     if (mEngine->GetUpdatingNodes())
     {
@@ -25,7 +25,7 @@ void CVDataListModel::AddNode(CVObject* node)
     }
 }
 
-void CVDataListModel::RemoveNode(CVObject* node)
+void CVDataListModel::RemoveNode(CVNode *node)
 {
     // pending nodes (vector)
     auto iter1 = std::find(mPendingNodes.begin(), mPendingNodes.end(), node);
@@ -61,10 +61,10 @@ void CVDataListModel::UpdateNodes(float deltaTime)
     mPendingNodes.clear();
 
     // 死んだNodeを回収
-    std::vector<CVObject*> deadNodes;
+    std::vector<CVNode *> deadNodes;
     for (auto& node : mNodes)
     {
-        if (node->GetState() == CVObject::EDead)
+        if (node->GetState() == CVNode::EDead)
         {
             deadNodes.emplace_back(node);
         }

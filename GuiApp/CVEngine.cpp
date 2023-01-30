@@ -1,11 +1,10 @@
 #include "CVEngine.h"
-#include "CVObject.h"
+#include "CVNode.h"
 #include "CVDataModel.h"
 #include "CVDataModelFactory.h"
 
 #include <iostream>
 #include <thread>
-
 
 #define CV_TARGET_FPS (int)(1000000.0f / 30)
 
@@ -57,12 +56,12 @@ void CVEngine::RunLoop()
     }
 }
 
-void CVEngine::AddNode(CVObject* node)
+void CVEngine::AddNode(CVNode *node)
 {
     mDataModel->AddNode(node);
 }
 
-void CVEngine::RemoveNode(CVObject* node)
+void CVEngine::RemoveNode(CVNode *node)
 {
     mDataModel->RemoveNode(node);
 }

@@ -1,18 +1,17 @@
-#include "CVObject.h"
+#include "CVNode.h"
 #include "CVEngine.h"
 #include "CVComponent.h"
 #include "CVDataModel.h"
 
 #include <iostream>
 
-CVObject::CVObject(ICVDataModel *dataModel)
-    : mState(EActive)
-    , mDataModel(dataModel)
+CVNode::CVNode(ICVDataModel *dataModel)
+    : mState(EActive), mDataModel(dataModel)
 {
     mDataModel->AddNode(this);
 }
 
-CVObject::~CVObject()
+CVNode::~CVNode()
 {
     mDataModel->RemoveNode(this);
 
@@ -24,12 +23,12 @@ CVObject::~CVObject()
     }
 }
 
-void CVObject::AddComponent(CVComponent* comp)
+void CVNode::AddComponent(CVComponent *comp)
 {
     mComponents.push_back(comp);
 }
 
-void CVObject::RemoveComponent(CVComponent* comp)
+void CVNode::RemoveComponent(CVComponent *comp)
 {
     auto iter = mComponents.begin();
     for (; iter != mComponents.end(); ++iter)
@@ -43,14 +42,14 @@ void CVObject::RemoveComponent(CVComponent* comp)
     mComponents.erase(iter);
 }
 
-void CVObject::Update(float deltaTime)
+void CVNode::Update(float deltaTime)
 {
     if (mState == EActive)
     {
         ComputeWorldTransform();
 
         UpdateComponents(deltaTime);
-        UpdateObject(deltaTime);
+        UpdateNode(deltaTime);
 
         ComputeWorldTransform();
     }
@@ -58,15 +57,15 @@ void CVObject::Update(float deltaTime)
     
 
     // mTrialItemのResultデータをmDeployedItemのResultデータに付け替える
-    std::cout << "Update CVObject with ID:" << " component!!" << std::endl;
+    std::cout << "Update CVNode with ID:" << " component!!" << std::endl;
 }
 
-void CVObject::UpdateObject(float deltaTime)
+void CVNode::UpdateNode(float deltaTime)
 {
-    // Object固有の処理
+    // Node固有の処理
 }
 
-void CVObject::UpdateComponents(float deltaTime)
+void CVNode::UpdateComponents(float deltaTime)
 {
     for (auto comp : mComponents)
     {
@@ -74,7 +73,7 @@ void CVObject::UpdateComponents(float deltaTime)
     }
 }
 
-void CVObject::ComputeWorldTransform()
+void CVNode::ComputeWorldTransform()
 {
 
 }

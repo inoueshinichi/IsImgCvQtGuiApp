@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 #include <string>
 #include <vector>
@@ -34,9 +34,10 @@ public:
     virtual const std::string& GetPluginRelPath(unsigned int) = 0;
     virtual const std::string& GetPluginAbsPath(unsigned int) = 0;
     virtual int GetNumPlugins() const = 0;
+    virtual const std::string& GetClassName() const = 0;
 };
 
-class CVPluginManager
+class CVPluginManager : public ICVPluginManager
 {
 public:
     virtual ~CVPluginManager() {}
@@ -45,8 +46,11 @@ public:
     void UnloadAll();
     const std::string &GetPluginRelPath(class CVPlugin* plugin);
     const std::string &GetPluginAbsPath(class CVPlugin *plugin);
-    size_t GetNumPlugins() const;
+    int GetNumPlugins() const;
     class CVPlugin * GetPlugin(unsigned int index);
+
+    virtual const std::string& GetClassName() const override { "CVPluginManager"; }
+
 protected:
     // 管轄下にあるDLLの全情報
     std::vector<CVPluginInfo> mPlugins;

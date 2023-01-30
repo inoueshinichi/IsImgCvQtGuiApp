@@ -31,7 +31,7 @@ const std::string &CVPluginManager::GetPluginAbsPath(CVPlugin *plugin)
 
 }
 
-size_t CVPluginManager::GetNumPlugins() const
+int CVPluginManager::GetNumPlugins() const
 {
     return mPlugins.size();
 }

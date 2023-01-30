@@ -1,10 +1,10 @@
 #include "CVIPComponent.h"
-#include "CVObject.h"
+#include "CVNode.h"
 #include "CVIPTaskController.h"
 #include "CVItem.h"
 
 
-CVIPComponent::CVIPComponent(CVObject* owner)
+CVIPComponent::CVIPComponent(CVNode *owner)
     : CVComponent(owner)
 {
     mTaskController = new CVIPTaskController(this);

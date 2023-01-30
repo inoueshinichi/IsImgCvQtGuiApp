@@ -1,11 +1,13 @@
 #pragma once
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 #include <vector>
 #include <memory>
 
 class ICVItem;
+
+using ICVItemPtr = std::shared_ptr<ICVItem>;
 
 class CVIPTask
 {
@@ -17,17 +19,19 @@ public:
     void Execute();
     const class CVIPTaskController* GetTaskController() const { return mOwner; }
 
-    void Setup(class CVIPComponent* comp);
-    void Attatch(class CVIPComponent* comp);
-    
+    void Setup();
+    void Attatch();
+
+    virtual const std::string& GetClassName() const { return "CVIPTask"; }
+
 protected:
     virtual void ExecuteImpl();
 
 private:
     class CVIPTaskController *mOwner;
     unsigned int mID;
-    std::vector<std::shared_ptr<ICVItem> > mSrcItems;
-    std::vector<std::shared_ptr<ICVItem> > mDstItems;
+    std::vector<ICVItemPtr> mSrcItems;
+    std::vector<ICVItemPtr> mDstItems;
 
     CV_DISABLE_COPY_AND_ASSIGN(CVIPTask)
 };

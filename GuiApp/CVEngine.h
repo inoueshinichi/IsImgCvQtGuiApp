@@ -5,7 +5,7 @@
 #include <vector>
 #include <chrono>
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 class CVEngine
 {
@@ -15,16 +15,18 @@ public:
 
     bool Initialize();
     void Shutdown();
-    
+
+    const std::string& GetClassName() const { return "CVEngine"; }
     
     void Run();
     void RunLoop();
 
-    void AddNode(class CVObject *node);
-    void RemoveNode(class CVObject *node);
+    void AddNode(class CVNode *node);
+    void RemoveNode(class CVNode *node);
 
     bool GetUpdatingNodes() const { return mIsUpdatingNodes; }
     void SetUpdatingNodes(bool updatingNodes) { mIsUpdatingNodes = updatingNodes; }
+
 
 private:
     void UpdateEngine();

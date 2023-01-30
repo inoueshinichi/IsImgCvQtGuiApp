@@ -4,9 +4,9 @@
 #include <vector>
 #include <list>
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
-class CVObject
+class CVNode
 {
 public:
     enum State
@@ -15,15 +15,17 @@ public:
         EPaused,
         EDead,
     };
-    
-    CVObject(class ICVDataModel* dataModel);
-    virtual ~CVObject();
+
+    CVNode(class ICVDataModel *dataModel);
+    virtual ~CVNode();
+
+    virtual const std::string& GetClassName() const { return "CVNode"; }
 
     void AddComponent(class CVComponent* comp);
     void RemoveComponent(class CVComponent* comp);
 
     void Update(float deltaTime);
-    virtual void UpdateObject(float deltaTime);
+    virtual void UpdateNode(float deltaTime);
     void UpdateComponents(float deltaTime);
 
     class ICVDataModel* GetDataModel() { return mDataModel; }
@@ -33,12 +35,11 @@ public:
 
     void ComputeWorldTransform();
 
-
 private:
     State mState;
     std::string mName;
     class ICVDataModel* mDataModel;
     std::vector<class CVComponent*> mComponents;
 
-    CV_DISABLE_COPY_AND_ASSIGN(CVObject)
+    CV_DISABLE_COPY_AND_ASSIGN(CVNode)
 };

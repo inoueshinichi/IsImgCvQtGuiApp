@@ -13,4 +13,5 @@ public:
     bool Initialize() override;
     bool Shutdown() override;
     void About() const override;
+    const std::string& GetClassName() const override { return "CVIPScriptPugin"; }
 };

@@ -2,15 +2,15 @@
 
 #include "CVIPTask.h"
 
-#include <string>
-
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 class CVIPScriptTask : public CVIPTask
 {
 public:
     CVIPScriptTask(class CVIPTaskController* owner);
     virtual ~CVIPScriptTask();
+
+    virtual const std::string& GetClassName() const override { return "CVIPScriptTask"; }
 
     bool LoadScript(const std::string& fileName);
     bool ReloadScript();

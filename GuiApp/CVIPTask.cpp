@@ -26,18 +26,16 @@ void CVIPTask::Execute()
     }
 }
 
-void CVIPTask::Setup(CVIPComponent* comp)
+void CVIPTask::Setup()
 {
     CV_DEBUG_LOG("[Setup] task's SrcItems in IPTask : %p\n", (void*)this);
-    // share items (IPComponent -> IPTask)
-    mSrcItems = comp->GetSrcItems(); 
+    mSrcItems = mOwner->GetIPCompoennt()->GiveSrcItems();
 }
 
-void CVIPTask::Attatch(CVIPComponent* comp)
+void CVIPTask::Attatch()
 {
     CV_DEBUG_LOG("[Attach] task's DstItems in IPTask : %p\n", (void*)this);
-    // share items (IPTask -> IPcomponent)
-    comp->SetDstItems(mDstItems);
+    mOwner->GetIPCompoennt()->TakeDstItems(mDstItems);
 }
 
 void CVIPTask::ExecuteImpl()

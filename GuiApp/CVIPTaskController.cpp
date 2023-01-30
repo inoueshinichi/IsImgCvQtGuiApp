@@ -22,9 +22,9 @@ void CVIPTaskController::DoRepresentativeTask()
     if (mIPTasks.size() > 0)
     {
         // 先頭のタスクがTry&Errorの結果選ばれた代表タスク
-        mIPTasks[0]->Setup(mOwner);
+        mIPTasks[0]->Setup();
         mIPTasks[0]->Execute();
-        mIPTasks[0]->Attatch(mOwner);
+        mIPTasks[0]->Attatch();
     }   
 }
 
@@ -33,7 +33,7 @@ void CVIPTaskController::DoTask(unsigned int taskID)
     auto iter = GetTaskIDIter(taskID);
     if (iter != mIPTasks.end())
     {
-        (*iter)->Setup(mOwner);
+        (*iter)->Setup();
         (*iter)->Execute();
     }
 }
@@ -80,7 +80,7 @@ void CVIPTaskController::RemoveTask(CVIPTask *task)
 
 std::vector<CVIPTask *>::iterator CVIPTaskController::GetTaskIDIter(unsigned int taskID)
 {
-    auto judgeFunc = [&taskID](const auto p) {
+    auto judgeFunc = [taskID](const auto p) {
         return (p->GetID() == taskID) ? true : false;
     };
     auto iter = std::find_if(mIPTasks.begin(),
