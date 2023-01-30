@@ -44,6 +44,8 @@
     #define IS_DEBUG_LOG(format, ...)
 #endif
 
+#define CV_DEBUG_CHECKER(class_this_ptr) \
+    CV_DEBUG_LOG("[%p] %s in %s, %d at %s\n", (void *)class_this_ptr, __FUNCTION__, class_this_ptr->GetClassName().c_str(), __LINE__, __FILE__);
 
 // コピーコンストラクタとコピー代入演算子の外部公開を禁止する
 #define CV_DISABLE_COPY_AND_ASSIGN(class_name)           \

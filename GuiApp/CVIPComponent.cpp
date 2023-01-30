@@ -18,6 +18,8 @@ CVIPComponent::~CVIPComponent()
 
 void CVIPComponent::Update(float deltaTime)
 {
+    CV_DEBUG_CHECKER(this) 
     // 現在のタスク番号に該当するタスクを実行
-    mTaskController->DoRepresentativeTask();
+    // mTaskController->DoRepresentativeTask();
+    mTaskController->DoAllTask();
 }

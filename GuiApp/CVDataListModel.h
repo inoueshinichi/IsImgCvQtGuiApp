@@ -22,7 +22,7 @@ public:
 
     virtual void UpdateNodes(float deltaTime) override;
 
-    const std::string& GetClassName() const override { return "CVDataListModel"; }
+    std::string GetClassName() const override { return "CVDataListModel"; }
 
     StructureType GetModelType() const override { return EListModel; }
 

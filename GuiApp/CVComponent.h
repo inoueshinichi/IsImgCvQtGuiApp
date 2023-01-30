@@ -12,7 +12,7 @@ public:
     virtual void SetName(const std::string& name) = 0;
     virtual const std::string& GetName() = 0;
     virtual void OnUpdateTransform() = 0;
-    virtual const std::string& GetClassName() const = 0;
+    virtual std::string GetClassName() const = 0;
 };
 
 
@@ -27,7 +27,7 @@ public:
     class CVNode *GetNode() override { return mOwner; }
     void SetName(const std::string& name) override { mName = name; }
     const std::string& GetName() override { return mName; }
-    virtual const std::string& GetClassName() const override { return "CVComponent"; }
+    virtual std::string GetClassName() const override { return "CVComponent"; }
 
 private:
     class CVNode* mOwner;

@@ -12,7 +12,7 @@ class ICVPlugin
 public:
     virtual ~ICVPlugin() {}
     virtual const std::string& GetName() const = 0;
-    virtual const std::string& GetClassName() const = 0;
+    virtual std::string GetClassName() const = 0;
     virtual bool Initialize() = 0;
     virtual bool Shutdown() = 0;
     virtual void About() const = 0;
@@ -26,7 +26,7 @@ public:
     CVPlugin(CVPluginManager& manager);
     virtual ~CVPlugin();
     const std::string& GetName() const override;
-    virtual const std::string& GetClassName() const override { return "CVPlugin"; }
+    virtual std::string GetClassName() const override { return "CVPlugin"; }
     virtual bool Initialize() override;
     virtual bool Shutdown() override;
     virtual void About() const override;

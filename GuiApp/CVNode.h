@@ -19,7 +19,7 @@ public:
     CVNode(class ICVDataModel *dataModel);
     virtual ~CVNode();
 
-    virtual const std::string& GetClassName() const { return "CVNode"; }
+    virtual std::string GetClassName() const { return "CVNode"; }
 
     void AddComponent(class CVComponent* comp);
     void RemoveComponent(class CVComponent* comp);

@@ -16,7 +16,7 @@ public:
     bool Initialize();
     void Shutdown();
 
-    const std::string& GetClassName() const { return "CVEngine"; }
+    std::string GetClassName() const { return "CVEngine"; }
     
     void Run();
     void RunLoop();
@@ -26,6 +26,8 @@ public:
 
     bool GetUpdatingNodes() const { return mIsUpdatingNodes; }
     void SetUpdatingNodes(bool updatingNodes) { mIsUpdatingNodes = updatingNodes; }
+
+    class ICVDataModel* GetDataModel() const { return mDataModel; }
 
 
 private:

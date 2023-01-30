@@ -19,7 +19,8 @@ CVIPTaskController::~CVIPTaskController()
 
 void CVIPTaskController::DoRepresentativeTask()
 {
-    if (mIPTasks.size() > 0)
+    CV_DEBUG_CHECKER(this)
+    if(mIPTasks.size() > 0)
     {
         // 先頭のタスクがTry&Errorの結果選ばれた代表タスク
         mIPTasks[0]->Setup();
@@ -30,11 +31,22 @@ void CVIPTaskController::DoRepresentativeTask()
 
 void CVIPTaskController::DoTask(unsigned int taskID)
 {
+    CV_DEBUG_CHECKER(this)
     auto iter = GetTaskIDIter(taskID);
     if (iter != mIPTasks.end())
     {
         (*iter)->Setup();
         (*iter)->Execute();
+    }
+}
+
+void CVIPTaskController::DoAllTask()
+{
+    CV_DEBUG_CHECKER(this)
+    for (auto task : mIPTasks)
+    {
+        task->Setup();
+        task->Execute();
     }
 }
 

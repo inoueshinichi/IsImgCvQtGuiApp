@@ -22,7 +22,7 @@ public:
     void Setup();
     void Attatch();
 
-    virtual const std::string& GetClassName() const { return "CVIPTask"; }
+    virtual std::string GetClassName() const { return "CVIPTask"; }
 
 protected:
     virtual void ExecuteImpl();

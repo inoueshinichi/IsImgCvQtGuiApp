@@ -84,9 +84,6 @@ void CVEngine::UpdateEngine()
     float deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
     deltaTime /= 1000000.0f; // [s]
 
-    CV_DEBUG_LOG("DeltaTime: %f[s]\n", deltaTime);
-    
-
     // 時刻を更新(次のフレームのため)
     mTimePoint = high_resolution_clock::now();
 
@@ -96,9 +93,10 @@ void CVEngine::UpdateEngine()
         deltaTime = 0.05f; // 20FPS以上の変化量に制限
     }
 
-   
     
-
+    CV_DEBUG_LOG("DeltaTime: %f[s]\n", deltaTime);
+    CV_DEBUG_CHECKER(this)
+    
     // Nodeの更新
     mDataModel->UpdateNodes(deltaTime);
 }

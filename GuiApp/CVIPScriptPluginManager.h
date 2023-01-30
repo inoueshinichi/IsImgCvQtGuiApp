@@ -6,7 +6,7 @@ class CVIPScriptPluginManager : public CVPluginManager
 {
 public:
     ~CVIPScriptPluginManager();
-    const std::string& GetClassName() const override { return "CVIPScriptPluginManager"; }
+    std::string GetClassName() const override { return "CVIPScriptPluginManager"; }
 
 
 protected:

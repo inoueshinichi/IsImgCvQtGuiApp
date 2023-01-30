@@ -20,21 +20,39 @@ public:
     void Update(float deltaTime) override;
     void OnUpdateTransform() override {};
 
-    virtual const std::string& GetClassName() const override { return "CVIPComponent"; }
+    virtual std::string GetClassName() const override { return "CVIPComponent"; }
+
+    class CVIPTaskController* GetTaskController() const { return mTaskController; }
 
     // 外部CVObjectと通信
-    void ImportSrcItems(const std::vector<ICVItemPtr>& srcItems) { mSrcItems = srcItems; }
-    const std::vector<ICVItemPtr>& ExportDstItems() const { return mDstItems; }
+    void ImportSrcItems(const std::vector<ICVItemPtr>& srcItems) 
+    {
+        CV_DEBUG_CHECKER(this)
+        mSrcItems = srcItems;
+    }
+    const std::vector<ICVItemPtr>& ExportDstItems() const 
+    {
+        CV_DEBUG_CHECKER(this)
+        return mDstItems;
+    }
 
     // IPTaskと通信
-    const std::vector<ICVItemPtr>& GiveSrcItems() { return mSrcItems; }
-    void TakeDstItems(const std::vector<ICVItemPtr>& dstItems) { mDstItems = dstItems; }
+    const std::vector<ICVItemPtr>& GiveSrcItems() 
+    {
+        CV_DEBUG_CHECKER(this)
+        return mSrcItems;
+    }
+    void TakeDstItems(const std::vector<ICVItemPtr>& dstItems) 
+    {
+        CV_DEBUG_CHECKER(this)
+        mDstItems = dstItems;
+    }
 
 private:
     
     class CVIPTaskController* mTaskController;
-    std::vector<std::shared_ptr<ICVItem> > mSrcItems; // 参照
-    std::vector<std::shared_ptr<ICVItem> > mDstItems; // 値
+    std::vector<ICVItemPtr> mSrcItems;                // 参照
+    std::vector<ICVItemPtr> mDstItems;                // 値
 
     CV_DISABLE_COPY_AND_ASSIGN(CVIPComponent)
 };

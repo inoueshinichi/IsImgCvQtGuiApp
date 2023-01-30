@@ -34,7 +34,7 @@ public:
     virtual const std::string& GetPluginRelPath(unsigned int) = 0;
     virtual const std::string& GetPluginAbsPath(unsigned int) = 0;
     virtual int GetNumPlugins() const = 0;
-    virtual const std::string& GetClassName() const = 0;
+    virtual std::string GetClassName() const = 0;
 };
 
 class CVPluginManager : public ICVPluginManager
@@ -49,7 +49,7 @@ public:
     int GetNumPlugins() const;
     class CVPlugin * GetPlugin(unsigned int index);
 
-    virtual const std::string& GetClassName() const override { "CVPluginManager"; }
+    virtual std::string GetClassName() const override { "CVPluginManager"; }
 
 protected:
     // 管轄下にあるDLLの全情報

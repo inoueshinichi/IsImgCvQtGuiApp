@@ -31,4 +31,5 @@ void CVIPScriptTask::UnloadScript()
 void CVIPScriptTask::ExecuteImpl()
 {
     // Invoke dll program
+    CV_DEBUG_CHECKER(this)
 }

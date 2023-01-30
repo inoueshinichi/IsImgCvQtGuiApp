@@ -45,6 +45,8 @@ void CVDataListModel::RemoveNode(CVNode *node)
 
 void CVDataListModel::UpdateNodes(float deltaTime)
 {
+    CV_DEBUG_CHECKER(this)
+    
     // Nodesの更新
     mEngine->SetUpdatingNodes(true);
     for (auto& node : mNodes)

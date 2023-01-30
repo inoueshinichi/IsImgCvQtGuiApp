@@ -20,6 +20,7 @@ CVIPTask::~CVIPTask()
 
 void CVIPTask::Execute()
 {
+    CV_DEBUG_CHECKER(this)
     if (mSrcItems.size() > 0)
     {
         this->ExecuteImpl();
@@ -28,17 +29,18 @@ void CVIPTask::Execute()
 
 void CVIPTask::Setup()
 {
-    CV_DEBUG_LOG("[Setup] task's SrcItems in IPTask : %p\n", (void*)this);
+    CV_DEBUG_CHECKER(this)
     mSrcItems = mOwner->GetIPCompoennt()->GiveSrcItems();
 }
 
 void CVIPTask::Attatch()
 {
-    CV_DEBUG_LOG("[Attach] task's DstItems in IPTask : %p\n", (void*)this);
+    CV_DEBUG_CHECKER(this)
     mOwner->GetIPCompoennt()->TakeDstItems(mDstItems);
 }
 
 void CVIPTask::ExecuteImpl()
 {
     // nothing
+    CV_DEBUG_CHECKER(this)
 }

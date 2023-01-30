@@ -20,7 +20,7 @@ public:
     virtual void AddNode(class CVNode *node) = 0;
     virtual void RemoveNode(class CVNode *node) = 0;
     virtual void UpdateNodes(float deltaTime) = 0;
-    virtual const std::string& GetClassName() const = 0;
+    virtual std::string GetClassName() const = 0;
     virtual StructureType GetModelType() const = 0;
 };
 

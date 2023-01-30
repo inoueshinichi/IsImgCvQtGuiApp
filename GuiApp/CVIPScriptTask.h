@@ -10,7 +10,7 @@ public:
     CVIPScriptTask(class CVIPTaskController* owner);
     virtual ~CVIPScriptTask();
 
-    virtual const std::string& GetClassName() const override { return "CVIPScriptTask"; }
+    virtual std::string GetClassName() const override { return "CVIPScriptTask"; }
 
     bool LoadScript(const std::string& fileName);
     bool ReloadScript();

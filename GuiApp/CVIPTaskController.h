@@ -11,12 +11,13 @@ public:
     ~CVIPTaskController();
 
     void DoRepresentativeTask();
-    void DoTask(unsigned int taskID);
     bool ChangeRepresentativeTask(unsigned int taskID);
+    void DoTask(unsigned int taskID);
+    void DoAllTask();
     bool EraseTask(unsigned int taskID);
     class CVIPComponent* GetIPCompoennt() const { return mOwner; }
 
-    const std::string& GetClassName() const { return "CVIPTaskController"; }
+    std::string GetClassName() const { return "CVIPTaskController"; }
 
 private:
     friend class CVIPTask;

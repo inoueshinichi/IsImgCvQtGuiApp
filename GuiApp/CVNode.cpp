@@ -44,6 +44,8 @@ void CVNode::RemoveComponent(CVComponent *comp)
 
 void CVNode::Update(float deltaTime)
 {
+    CV_DEBUG_CHECKER(this);
+
     if (mState == EActive)
     {
         ComputeWorldTransform();
@@ -53,11 +55,6 @@ void CVNode::Update(float deltaTime)
 
         ComputeWorldTransform();
     }
-
-    
-
-    // mTrialItemのResultデータをmDeployedItemのResultデータに付け替える
-    std::cout << "Update CVNode with ID:" << " component!!" << std::endl;
 }
 
 void CVNode::UpdateNode(float deltaTime)
