@@ -12,9 +12,9 @@ CVPlugin::~CVPlugin()
 
 }
 
-const std::string &CVPlugin::GetName() const
+const std::string &CVPlugin::GetFilePath() const
 {
-    return mName;
+    return mFilePath;
 }
 
 bool CVPlugin::Initialize()

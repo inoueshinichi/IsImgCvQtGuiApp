@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "CVDefs.h"
+#include "CVCommon.h"
 
 /////////////////////////
 // 抽象インターフェースクラス
@@ -10,8 +10,14 @@
 class ICVPlugin
 {
 public:
+    enum PluginType
+    {
+        EBase = 0,
+        EIPScript = 1,
+    };
+
     virtual ~ICVPlugin() {}
-    virtual const std::string& GetName() const = 0;
+    virtual const std::string& GetFilePath() const = 0;
     virtual std::string GetClassName() const = 0;
     virtual bool Initialize() = 0;
     virtual bool Shutdown() = 0;
@@ -25,7 +31,7 @@ class CVPlugin : public ICVPlugin
 public:
     CVPlugin(CVPluginManager& manager);
     virtual ~CVPlugin();
-    const std::string& GetName() const override;
+    const std::string& GetFilePath() const override;
     virtual std::string GetClassName() const override { return "CVPlugin"; }
     virtual bool Initialize() override;
     virtual bool Shutdown() override;
@@ -33,9 +39,9 @@ public:
 
 private:
     CVPluginManager& mManager;
-    std::string mName;
+    std::string mFilePath;
 };
 
-typedef CVPlugin *(*CV_CREATEPLUGIN)(CVPluginManager &mgr);
+typedef CVPlugin *(*CV_CREATE_PLUGIN)(CVPluginManager &mgr);
 
 extern "C" CV_DLL_API CVPlugin *CreatePlugin(CVPluginManager &mgr);

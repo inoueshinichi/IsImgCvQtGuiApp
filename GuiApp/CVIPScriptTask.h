@@ -8,19 +8,18 @@ class CVIPScriptTask : public CVIPTask
 {
 public:
     CVIPScriptTask(class CVIPTaskController* owner);
-    virtual ~CVIPScriptTask();
+    ~CVIPScriptTask();
 
     virtual std::string GetClassName() const override { return "CVIPScriptTask"; }
 
-    bool LoadScript(const std::string& fileName);
-    bool ReloadScript();
-    void UnloadScript();
+    bool LoadScript(const std::string& pluginFilePath) const;
+    void UnloadScript() const;
 
+    const std::string &GetScriptPluginPath() const;
 
 protected:
     virtual void ExecuteImpl() override;
 private:
-    class CVIPScriptPlugin* mScriptPlugin;
 
     CV_DISABLE_COPY_AND_ASSIGN(CVIPScriptTask)
 };

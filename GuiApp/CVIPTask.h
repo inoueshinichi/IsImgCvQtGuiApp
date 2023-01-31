@@ -6,7 +6,6 @@
 #include <memory>
 
 class ICVItem;
-
 using ICVItemPtr = std::shared_ptr<ICVItem>;
 
 class CVIPTask
@@ -17,6 +16,7 @@ public:
 
     unsigned int GetID() const { return mID; }
     void Execute();
+    
     const class CVIPTaskController* GetTaskController() const { return mOwner; }
 
     void Setup();
