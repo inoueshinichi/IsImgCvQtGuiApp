@@ -56,6 +56,26 @@ endif()
 # プロセッサ
 message(STATUS "Processor: ${CMAKE_SYSTEM_PROCESSOR}")
 
+# ホストPCに関する情報
+cmake_host_system_information(RESULT PC_NUM_OF_LOG_CORES QUERY NUMBER_OF_LOGICAL_CORES) # CPUの論理コア数
+cmake_host_system_information(RESULT PC_NUM_OF_PHY_CORES QUERY NUMBER_OF_PHYSICAL_CORES) # CPUの物理コア数
+cmake_host_system_information(RESULT PC_HOSTNAME QUERY HOSTNAME) # PCのホスト名
+cmake_host_system_information(RESULT PC_FQDN QUERY FQDN) # PCのドメイン名
+cmake_host_system_information(RESULT PC_TVM QUERY TOTAL_VIRTUAL_MEMORY) # 全仮想メモリ量
+cmake_host_system_information(RESULT PC_AV_TVM QUERY AVAILABLE_VIRTUAL_MEMORY) # 空仮想メモリ量
+cmake_host_system_information(RESULT PC_TPM QUERY TOTAL_PHYSICAL_MEMORY) # 全メモリ量
+cmake_host_system_information(RESULT PC_AV_TPM QUERY AVAILABLE_PHYSICAL_MEMORY) # 空メモリ量
+message(STATUS "CPU: Logical cores: ${PC_NUM_OF_LOG_CORES}")
+message(STATUS "CPU: Physical cores: ${PC_NUM_OF_PHY_CORES}")
+message(STATUS "Hostname: ${PC_HOSTNAME}")
+message(STATUS "FQDN: ${PC_FQDN}")
+message(STATUS "Total virtual memory: ${PC_TVM}[MB]")
+message(STATUS "Avairable virtual memory: ${PC_AV_TVM}[MB]")
+message(STATUS "Total physical memory: ${PC_TPM}[MB]")
+message(STATUS "Avairable physical memory: ${PC_AV_TPM}[MB]")
+
+
+
 # ジェネレータの指定
 # https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html
 message(STATUS "Generator: $CACHE{CMAKE_GENERATOR}")
