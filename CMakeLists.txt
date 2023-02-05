@@ -39,8 +39,8 @@ option(BUILD_CPP_MSVC_STATIC_VCRUNTIME "Enable/Disable Static MSVC Runtime" OFF)
 # 独自キャッシュ変数の定義 (その他)
 set(BUILD_CPP_RELEASE_POSTFIX "" CACHE STRING "Release mode library file postfix")
 set(BUILD_CPP_DEBUG_POSTFIX "d" CACHE STRING "Debug mode library file postfix")
-set(BUILD_CPP_MINSIZEREL_POSTFIX "_minsizerel" CACHE STRING "MinSizRel mode library file postfix")
-set(BUILD_CPP_RELWITHDEBINFO_POSTFIX "_relwithdebinfo" CACHE STRING "RelWithDebInfo mode library file postfix")
+set(BUILD_CPP_MINSIZEREL_POSTFIX "s" CACHE STRING "MinSizRel mode library file postfix")
+set(BUILD_CPP_RELWITHDEBINFO_POSTFIX "rd" CACHE STRING "RelWithDebInfo mode library file postfix")
 
 # プラットフォーム
 if(WIN32)
